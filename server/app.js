@@ -18,6 +18,13 @@ const compression = require("compression");
 const morgan = require("morgan");
 
 const app = express();
+// app.use(express.static('public'));
+app.use(express.static(path.join(__dirname, 'public')));
+app.use((req, res, next) => {
+  res.setHeader('X-Content-Type-Options', 'nosniff');
+  next();
+});
+
 // app.set('view engine', 'ejs');
 // app.set('views', 'views');
 
@@ -31,10 +38,10 @@ app.use(helmet());
 app.use(compression());
 app.use(morgan('combined', {stream: accessLogStream}),);
 
-app.use(express.static('public'));
+
 app.use(bodyParser.urlencoded({extended: false}));
 app.use(express.json());
-app.use(express.static(path.join(__dirname, 'public')));
+
 
 
 app.use(adminRoutes);

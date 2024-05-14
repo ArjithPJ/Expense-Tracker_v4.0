@@ -10,7 +10,7 @@ exports.getResetPassword = async (req, res, next) => {
     const uuid = req.params.uuid;
     console.log(uuid);
     try{
-        res.sendFile(path.join(__dirname, '../', '../','client', 'Login', 'resetPassword.html'));
+        res.sendFile(path.join(__dirname, '../', 'public', 'Login', 'resetPassword.html'));
     }
     catch(error){
         console.error(error);
@@ -22,6 +22,7 @@ exports.postResetPassword = async (req, res, next) => {
     const email = req.body.email;
     const saltrounds = 10;
     const hashedPassword = await bcrypt.hash(newPassword, saltrounds);
+    console.log("Working");
     try{
         const user = await User.findOne({ email: email});
         const isActive = await ForgotPasswordRequest.findOne({userId: user.id });
