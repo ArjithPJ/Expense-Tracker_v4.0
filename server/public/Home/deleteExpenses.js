@@ -12,7 +12,7 @@ async function deleteExpense(e){
             currentPage: currentPage,
             selectedValue: parseInt(selectedValue,10)
         };
-        const response = await axios.post("http://localhost:3000/delete-expense/"+token, expenseDetails);
+        const response = await axios.post("http://3.80.139.21:3000/delete-expense/"+token, expenseDetails);
         if(response.status===200){
             const expenses= response.data.expenses;
             const pageExpenses = response.data.pageExpenses;

@@ -9,7 +9,7 @@ async function signup(e) {
             password: e.target.password.value
         }
         console.log(signupDetails)
-        const response =await axios.post('http://localhost:3000/signup', signupDetails)
+        const response =await axios.post('http://3.80.139.21:3000/signup', signupDetails)
         if(response.status ===201){
             window.location.href = "../Login/login.html";
         }

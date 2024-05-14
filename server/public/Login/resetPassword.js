@@ -8,7 +8,7 @@ async function resetPassword(e) {
             email: email,
             password: password
         }
-        const response = await axios.post('http://localhost:3000/password/resetpassword', newPasswordDetails, {
+        const response = await axios.post('http://3.80.139.21:3000/password/resetpassword', newPasswordDetails, {
         validateStatus: function (status) {
             return status >= 200 && status < 500; // Accept only status codes between 200 and 499
         }

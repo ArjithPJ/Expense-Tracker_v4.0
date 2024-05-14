@@ -5,7 +5,7 @@ async function forgotPassword(e){
         const verificationDetails = {
             email: email
         }
-        const response =await axios.post('http://localhost:3000/password/forgotpassword', verificationDetails);
+        const response =await axios.post('http://3.80.139.21:3000/password/forgotpassword', verificationDetails);
         if(response.status === 200){
             console.log("Email Sent");
             localStorage.setItem('email', JSON.stringify(email));

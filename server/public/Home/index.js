@@ -15,7 +15,7 @@ async function addExpense(e) {
         }
 
         console.log(expenseDetails);
-        const response = await axios.post('http://localhost:3000/add-expense/'+token, expenseDetails);
+        const response = await axios.post('http://3.80.139.21:3000/add-expense/'+token, expenseDetails);
         if(response.status === 200) {   
             const expenses= response.data.expenses;
             const pageExpenses = response.data.pageExpenses;
@@ -64,7 +64,7 @@ async function populateExpenses() {
         const leaderboardDetails = {token:token};
         leaderboard.addEventListener("click", async function() {
             try{
-                const response = await axios.post("http://localhost:3000/premium/leaderboard", leaderboardDetails);
+                const response = await axios.post("http://3.80.139.21:3000/premium/leaderboard", leaderboardDetails);
                 if(response.status ===200){
                     console.log(response.data.leaderboard);
                     const leaderboard = response.data.leaderboard;
@@ -117,7 +117,7 @@ async function populateExpenses() {
         button.id = 'pagebutton';
         paginationContainer.appendChild(button);
         button.addEventListener("click", () => {
-            axios.get(`http://localhost:3000/home/?page=${i}&selectedValue=${selectedValue}`,{
+            axios.get(`http://3.80.139.21:3000/home/?page=${i}&selectedValue=${selectedValue}`,{
                 headers: {
                     'Authorization': `Bearer ${token}`
                 }

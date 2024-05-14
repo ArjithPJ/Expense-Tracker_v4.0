@@ -9,7 +9,7 @@ async function login(e) {
             password: e.target.password.value
         }
         console.log(loginDetails);
-        const response = await axios.post('http://localhost:3000/login', loginDetails, {
+        const response = await axios.post('http://3.80.139.21:3000/login', loginDetails, {
             validateStatus: function (status) {
                 return status >= 200 && status < 500; // Accept only status codes between 200 and 499
             }

@@ -91,7 +91,7 @@
             
             // Get the user ID or any other identifier needed for your backend
             // Make a Fetch API request to your backend to store payment ID
-            fetch("http://localhost:3000/buypremium/"+ token, {
+            fetch("http://3.80.139.21:3000/buypremium/"+ token, {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json"
@@ -128,7 +128,7 @@
                 const leaderboardDetails = {token:token};
                 button.addEventListener("click", async function() {
                     try{
-                        const response = await axios.post("http://localhost:3000/premium/leaderboard", leaderboardDetails);
+                        const response = await axios.post("http://3.80.139.21:3000/premium/leaderboard", leaderboardDetails);
                         if(response.status ===200){
                             console.log(response.data.leaderboard);
                             const leaderboard = response.data.leaderboard;
@@ -200,7 +200,7 @@
         };
         document.getElementById('report').onclick = async function () {
             const token = localStorage.getItem('token');
-            const response = await axios.get('http://localhost:3000/download?token='+token);
+            const response = await axios.get('http://3.80.139.21:3000/download?token='+token);
             if(response.status===200){
                 console.log("Downloads successfully fetched");
                 const downloads = response.data.downloads;

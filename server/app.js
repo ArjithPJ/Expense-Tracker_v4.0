@@ -58,7 +58,7 @@ app.use(adminRoutes);
 
 mongoose
   .connect(
-    'mongodb://localhost:27017/expense_tracker'
+    `mongodb://Arjith:${DB_PASSWORD}@docdb-2024-05-14-11-43-16.cluster-c3iekgymi65b.us-east-1.docdb.amazonaws.com:27017/?tls=true&tlsCAFile=global-bundle.pem&replicaSet=rs0&readPreference=secondaryPreferred&retryWrites=false`
   )
   .then(result => {
     // User.findOne().then(user => {

@@ -7,7 +7,7 @@ async function showEntries(selectedValue){
     const currentPage = localStorage.getItem('currentPage');
     const token = localStorage.getItem('token');
     localStorage.setItem('selectedValue', selectedValue);
-    const response = await axios.get(`http://localhost:3000/home/?page=${1}&selectedValue=${selectedValue}`,{
+    const response = await axios.get(`http://3.80.139.21:3000/home/?page=${1}&selectedValue=${selectedValue}`,{
         headers: {
             'Authorization': `Bearer ${token}`
         }
@@ -53,7 +53,7 @@ async function showEntries(selectedValue){
             button.id = 'pagebutton';
             paginationContainer.appendChild(button);
             button.addEventListener("click", () => {
-                axios.get(`http://localhost:3000/home/?page=${i}&selectedValue=${selectedValue}`,{
+                axios.get(`http://3.80.139.21:3000/home/?page=${i}&selectedValue=${selectedValue}`,{
                     headers: {
                         'Authorization': `Bearer ${token}`
                     }
