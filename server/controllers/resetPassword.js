@@ -10,6 +10,15 @@ exports.getResetPassword = async (req, res, next) => {
     const uuid = req.params.uuid;
     console.log(uuid);
     try{
+        res.setHeader('Content-Security-Policy', "script-src 'self' https://cdn.jsdelivr.net/; style-src 'self' https://cdn.jsdelivr.net/;");
+
+
+        // if (req.url.endsWith('.css')) {
+        //     res.setHeader('Content-Type', 'text/css');
+        // }
+        // if(req.url.endsWith('.js')) {
+        //     res.setHeader('Content-type', 'application/javascript');
+        // }
         res.sendFile(path.join(__dirname, '../', 'public', 'Login', 'resetPassword.html'));
     }
     catch(error){

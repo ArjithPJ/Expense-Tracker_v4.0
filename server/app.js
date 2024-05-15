@@ -20,10 +20,7 @@ const morgan = require("morgan");
 const app = express();
 // app.use(express.static('public'));
 app.use(express.static(path.join(__dirname, 'public')));
-app.use((req, res, next) => {
-  res.setHeader('X-Content-Type-Options', 'nosniff');
-  next();
-});
+
 
 // app.set('view engine', 'ejs');
 // app.set('views', 'views');
@@ -45,35 +42,14 @@ app.use(express.json());
 
 
 app.use(adminRoutes);
-//app.use(errorController.get404);
 
-// Users.hasMany(Expenses);
-// Expenses.belongsTo(Users, { foreignKey: 'id'});
-
-// Users.hasMany(Orders);
-// Orders.belongsTo(Users);
-
-// Users.hasMany(ForgotPasswordRequests);
-// ForgotPasswordRequests.belongsTo(Users);
 
 mongoose
   .connect(
     `mongodb://Arjith:${DB_PASSWORD}@docdb-2024-05-14-11-43-16.cluster-c3iekgymi65b.us-east-1.docdb.amazonaws.com:27017/?tls=true&tlsCAFile=global-bundle.pem&replicaSet=rs0&readPreference=secondaryPreferred&retryWrites=false`
   )
   .then(result => {
-    // User.findOne().then(user => {
-    //   if(!user){
-    //     const user = new User({
-    //       name: 'Arjith',
-    //       email: 'pjarjith@gmail.com',
-    //       cart: {
-    //         items: []
-    //       }
-    //     });
-    //     user.save(); 
-    //   }
-      
-    // });
+    console.log("Database connected")
     app.listen(3000);
   })
   .catch(err => {

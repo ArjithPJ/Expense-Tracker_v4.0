@@ -1,3 +1,5 @@
+const leader = document.querySelector('.leaderboard-table');
+console.log(leader);
 async function addExpense(e) {
     try{
         e.preventDefault();
@@ -25,6 +27,9 @@ async function addExpense(e) {
             const previousPage = response.data.previousPage;
             const hasPreviousPage = response.data.hasPreviousPage;
             const lastPage = response.data.lastPage;
+            if(leader){
+                leader.remove();
+            }
 
             console.log("Expenses", expenses);
             localStorage.setItem('expenses',JSON.stringify(expenses));
@@ -36,6 +41,9 @@ async function addExpense(e) {
             localStorage.setItem('lastPage', JSON.stringify(lastPage));
             console.log(pageExpenses);
             console.log("Expense Added in the database");
+            e.target.amount.value='';
+            e.target.description.value='';
+            e.target.category.value='';
             await populateExpenses();
         }
         else{
